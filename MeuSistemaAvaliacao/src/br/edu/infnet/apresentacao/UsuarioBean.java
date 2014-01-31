@@ -2,14 +2,14 @@ package br.edu.infnet.apresentacao;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import br.edu.infnet.modelo.negocio.UsuarioRN;
 import br.edu.infnet.pojo.Usuario;
 
 @ManagedBean(name="usuarioBean")
-@RequestScoped
+@SessionScoped
 public class UsuarioBean {
 	private Usuario usuario = new Usuario();
 	private String confirmarSenha;
@@ -34,21 +34,17 @@ public class UsuarioBean {
 		return "usuarioSucesso";
 	}
 	public String efetuarLogin() {
-		/*FacesContext context = FacesContext.getCurrentInstance();
+		FacesContext context = FacesContext.getCurrentInstance();
 		
 		UsuarioRN usuarioRN = new UsuarioRN();
 		Usuario usuarioConsulta = usuarioRN.buscarPorLogin(this.usuario.getLogin());
-		*/
-		/*
-		if (this.usuario.getSenha() != usuarioConsulta.getSenha()) {
-			
+		
+		String senha = this.usuario.getSenha();
+		if(!senha.equals(usuarioConsulta.getSenha())){
 			context.addMessage(null,
 					new FacesMessage("Login ou Senha inválidos!"));
-			
 			return "login";
-			
 		}
-		*/
 		return "avaliacao";
 		
 	}
