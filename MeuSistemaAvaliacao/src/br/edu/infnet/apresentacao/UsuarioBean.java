@@ -34,20 +34,23 @@ public class UsuarioBean {
 		return "usuarioSucesso";
 	}
 	public String efetuarLogin() {
-		/*
+		/*FacesContext context = FacesContext.getCurrentInstance();
+		
 		UsuarioRN usuarioRN = new UsuarioRN();
 		Usuario usuarioConsulta = usuarioRN.buscarPorLogin(this.usuario.getLogin());
-		System.out.println("usuario: " + usuarioConsulta.getNome());
-
-		if (this.usuario.getSenha() == usuarioConsulta.getSenha()) {
+		*/
+		/*
+		if (this.usuario.getSenha() != usuarioConsulta.getSenha()) {
 			
-			FacesContext.getCurrentInstance().addMessage(null,
+			context.addMessage(null,
 					new FacesMessage("Login ou Senha inválidos!"));
-			return "";
+			
+			return "login";
+			
 		}
-		
 		*/
 		return "avaliacao";
+		
 	}
 	public Usuario getUsuario(){return usuario;}
 	public void setUsuario(Usuario usuario){this.usuario =  usuario;}

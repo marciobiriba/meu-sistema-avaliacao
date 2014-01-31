@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Sistema de Avaliação</title>
+
+	<style type="text/css">
+body {
+	font-size: 10px;
+}
+</style>
+</h:head>
+<h:body>
+	<h:form >
+		<p:growl id="growl" showDetail="true"/>
+		<p:panelGrid header="Avaliação geral da Pós-Graduação:" column="2">
+			<h:outputFormat value=""/>
+			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating1})"/>
+			<h:outputFormat value=""/>
+			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating2})"/>
+			<h:outputFormat value=""/>
+			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating3})"/>
+			<h:outputFormat value=""/>
+			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating4})"/>
+			<h:outputFormat value=""/>
+			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating5)"/>
+			<h:outputFormat value=""/>
+			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating6})"/>
+		</p:panelGrid>
+		<p:panelGrid header="Avaliação do professor no módulo:" column="2">
+			<h:outputFormat value=""/>
+			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating7})"/>
+			<h:outputFormat value=""/>
+			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating8})"/>
+			<h:outputFormat value=""/>
+			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating9})"/>
+			<h:outputFormat value=""/>
+			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating10})"/>
+			<h:outputFormat value=""/>
+			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating11})"/>
+			<h:outputFormat value=""/>
+			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating12})"/>
+		</p:panelGrid>
+		<p:panelGrid header="Avaliação de conteúdo e infra-estrutura no módulo:" column="2">
+			<h:outputFormat value=""/>
+			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating13})"/>
+			<h:outputFormat value=""/>
+			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating14})"/>
+			<h:outputFormat value=""/>
+			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating15})"/>
+			<h:outputFormat value=""/>
+			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating16})"/>
+			<h:outputFormat value=""/>
+			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating17})"/>
+			<h:outputFormat value=""/>
+			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating18})"/>
+		</p:panelGrid>
+	</h:form>
+</h:body>
+</html>
