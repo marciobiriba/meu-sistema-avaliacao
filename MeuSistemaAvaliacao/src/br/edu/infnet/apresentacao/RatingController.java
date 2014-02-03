@@ -1,11 +1,21 @@
 package br.edu.infnet.apresentacao;
 
+import java.io.Serializable;
+
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.RateEvent;
-  
-public class RatingController {  
+
+@ManagedBean(name="ratingController")
+@SessionScoped
+public class RatingController implements Serializable{  
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer rating1;
 	private Integer rating2;
 	private Integer rating3;
@@ -14,6 +24,7 @@ public class RatingController {
 	private Integer rating6;
 	private Integer rating7;
 	private Integer rating8;
+	private Integer rating9;
 	private Integer rating10;
 	private Integer rating11;
 	private Integer rating12;
@@ -22,16 +33,15 @@ public class RatingController {
 	private Integer rating15;
 	private Integer rating16;
 	private Integer rating17;
-	private Integer rating18;
 	
     public void onrate(RateEvent rateEvent) {  
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Rate Event", "You rated:" + ((Integer) rateEvent.getRating()).intValue());  
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sistema Avaliação", "Você avaliou como:" + ((Integer) rateEvent.getRating()).intValue());  
   
         FacesContext.getCurrentInstance().addMessage(null, message);  
     }  
       
     public void oncancel() {  
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Cancel Event", "Rate Reset");  
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sistema Avaliação", "Melhor não opinar");  
   
         FacesContext.getCurrentInstance().addMessage(null, message);  
     }  
@@ -100,6 +110,14 @@ public class RatingController {
 		this.rating8 = rating8;
 	}
 
+	public Integer getRating9() {
+		return rating9;
+	}
+
+	public void setRating9(Integer rating9) {
+		this.rating9 = rating9;
+	}
+
 	public Integer getRating10() {
 		return rating10;
 	}
@@ -164,11 +182,4 @@ public class RatingController {
 		this.rating17 = rating17;
 	}
 
-	public Integer getRating18() {
-		return rating18;
-	}
-
-	public void setRating18(Integer rating18) {
-		this.rating18 = rating18;
-	}  
 }

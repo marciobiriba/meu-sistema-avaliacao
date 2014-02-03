@@ -1,8 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html
-	xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
@@ -10,58 +10,245 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>Sistema de Avaliação</title>
-
-	<style type="text/css">
-body {
-	font-size: 10px;
-}
-</style>
 </h:head>
 <h:body>
-	<h:form >
-		<p:growl id="growl" showDetail="true"/>
-		<p:panelGrid header="Avaliação geral da Pós-Graduação:" column="2">
-			<h:outputFormat value=""/>
-			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating1})"/>
-			<h:outputFormat value=""/>
-			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating2})"/>
-			<h:outputFormat value=""/>
-			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating3})"/>
-			<h:outputFormat value=""/>
-			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating4})"/>
-			<h:outputFormat value=""/>
-			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating5)"/>
-			<h:outputFormat value=""/>
-			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating6})"/>
-		</p:panelGrid>
-		<p:panelGrid header="Avaliação do professor no módulo:" column="2">
-			<h:outputFormat value=""/>
-			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating7})"/>
-			<h:outputFormat value=""/>
-			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating8})"/>
-			<h:outputFormat value=""/>
-			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating9})"/>
-			<h:outputFormat value=""/>
-			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating10})"/>
-			<h:outputFormat value=""/>
-			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating11})"/>
-			<h:outputFormat value=""/>
-			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating12})"/>
-		</p:panelGrid>
-		<p:panelGrid header="Avaliação de conteúdo e infra-estrutura no módulo:" column="2">
-			<h:outputFormat value=""/>
-			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating13})"/>
-			<h:outputFormat value=""/>
-			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating14})"/>
-			<h:outputFormat value=""/>
-			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating15})"/>
-			<h:outputFormat value=""/>
-			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating16})"/>
-			<h:outputFormat value=""/>
-			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating17})"/>
-			<h:outputFormat value=""/>
-			<p:rating value="#{ratingController.rating}" stars="5" cancel="false" onRate="alert(#{ratingController.rating18})"/>
-		</p:panelGrid>
+	<h:form id="form">
+
+		<p:growl id="messages" showDetail="true" />
+
+		<p:panel header="Avaliação geral da Pós-Graduação:">
+			<p:panelGrid columns="2" cellpadding="5">
+				<h:outputText
+					value="1.	 Até agora, o curso está atingindo as minhas expectativas." />
+				<p:rating value="#{ratingController.rating1}">
+					<p:ajax event="rate" listener="#{ratingController.onrate}"
+						update="messages" />
+					<p:ajax event="cancel" listener="#{ratingController.oncancel}"
+						update="messages" />
+				</p:rating>
+
+				<h:outputText
+					value="2.	 Até agora, eu indicaria o curso para um amigo." />
+				<p:rating value="#{ratingController.rating2}">
+					<p:ajax event="rate" listener="#{ratingController.onrate}"
+						update="messages" />
+					<p:ajax event="cancel" listener="#{ratingController.oncancel}"
+						update="messages" />
+				</p:rating>
+
+				<h:outputText
+					value="3.	 Até agora, o curso me parece voltado para as necessidades do mercado." />
+				<p:rating value="#{ratingController.rating3}">
+					<p:ajax event="rate" listener="#{ratingController.onrate}"
+						update="messages" />
+					<p:ajax event="cancel" listener="#{ratingController.oncancel}"
+						update="messages" />
+				</p:rating>
+
+				<h:outputText
+					value="4.	 Até agora, a coordenação pedagógica parece comprometida com a qualidade do curso." />
+				<p:rating value="#{ratingController.rating4}">
+					<p:ajax event="rate" listener="#{ratingController.onrate}"
+						update="messages" />
+					<p:ajax event="cancel" listener="#{ratingController.oncancel}"
+						update="messages" />
+				</p:rating>
+
+				<h:outputText
+					value="5.	 Até agora, minha turma parece proporcionar um networking relevante 
+para a minha carreira." />
+				<p:rating value="#{ratingController.rating5}">
+					<p:ajax event="rate" listener="#{ratingController.onrate}"
+						update="messages" />
+					<p:ajax event="cancel" listener="#{ratingController.oncancel}"
+						update="messages" />
+				</p:rating>
+
+				<h:outputText
+					value="6.	 Até agora, o atendimento de Secretaria que recebi está atingindo as 
+minhas expectativas." />
+				<p:rating value="#{ratingController.rating6}">
+					<p:ajax event="rate" listener="#{ratingController.onrate}"
+						update="messages" />
+					<p:ajax event="cancel" listener="#{ratingController.oncancel}"
+						update="messages" />
+				</p:rating>
+
+			</p:panelGrid>
+		</p:panel>
+		
+		<p:panel header="Avaliação do professor no módulo:">
+			<p:panelGrid columns="2" cellpadding="5">
+				<h:outputText
+					value="1.	 O professor contribuiu para o meu aprendizado." />
+				<p:rating value="#{ratingController.rating7}">
+					<p:ajax event="rate" listener="#{ratingController.onrate}"
+						update="messages" />
+					<p:ajax event="cancel" listener="#{ratingController.oncancel}"
+						update="messages" />
+				</p:rating>
+
+				<h:outputText
+					value="2.	 O professor é atencioso e esteve disponível para tirar dúvidas." />
+				<p:rating value="#{ratingController.rating8}">
+					<p:ajax event="rate" listener="#{ratingController.onrate}"
+						update="messages" />
+					<p:ajax event="cancel" listener="#{ratingController.oncancel}"
+						update="messages" />
+				</p:rating>
+
+				<h:outputText
+					value="3.	 O professor aproveitou bem o tempo em sala de aula." />
+				<p:rating value="#{ratingController.rating9}">
+					<p:ajax event="rate" listener="#{ratingController.onrate}"
+						update="messages" />
+					<p:ajax event="cancel" listener="#{ratingController.oncancel}"
+						update="messages" />
+				</p:rating>
+
+				<h:outputText
+					value="4.	 O professor utilizou o Moodle e outros recursos didáticos para ajudar no meu aprendizado." />
+				<p:rating value="#{ratingController.rating10}">
+					<p:ajax event="rate" listener="#{ratingController.onrate}"
+						update="messages" />
+					<p:ajax event="cancel" listener="#{ratingController.oncancel}"
+						update="messages" />
+				</p:rating>
+
+				<h:outputText
+					value="5.	 O professor aproveitou bem os recursos da sala de aula." />
+				<p:rating value="#{ratingController.rating11}">
+					<p:ajax event="rate" listener="#{ratingController.onrate}"
+						update="messages" />
+					<p:ajax event="cancel" listener="#{ratingController.oncancel}"
+						update="messages" />
+				</p:rating>
+
+				<h:outputText
+					value="6.	 Gostaria de cursar outros módulos com esse professor." />
+				<p:rating value="#{ratingController.rating12}">
+					<p:ajax event="rate" listener="#{ratingController.onrate}"
+						update="messages" />
+					<p:ajax event="cancel" listener="#{ratingController.oncancel}"
+						update="messages" />
+				</p:rating>
+
+			</p:panelGrid>
+		</p:panel>
+
+		<p:panel header="Avaliação de conteúdo e infra-estrutura no módulo:">
+			<p:panelGrid columns="2" cellpadding="5">
+				<h:outputText
+					value="1.	 Eu adquiri as competências propostas para o módulo." />
+				<p:rating value="#{ratingController.rating13}">
+					<p:ajax event="rate" listener="#{ratingController.onrate}"
+						update="messages" />
+					<p:ajax event="cancel" listener="#{ratingController.oncancel}"
+						update="messages" />
+				</p:rating>
+
+				<h:outputText
+					value="2.	 O módulo foi útil para o meu crescimento profissional." />
+				<p:rating value="#{ratingController.rating14}">
+					<p:ajax event="rate" listener="#{ratingController.onrate}"
+						update="messages" />
+					<p:ajax event="cancel" listener="#{ratingController.oncancel}"
+						update="messages" />
+				</p:rating>
+
+				<h:outputText value="3.	 A carga horária do módulo foi apropriada." />
+				<p:rating value="#{ratingController.rating15}">
+					<p:ajax event="rate" listener="#{ratingController.onrate}"
+						update="messages" />
+					<p:ajax event="cancel" listener="#{ratingController.oncancel}"
+						update="messages" />
+				</p:rating>
+
+				<h:outputText
+					value="4.	 O acervo da biblioteca atendeu as necessidades desse módulo." />
+				<p:rating value="#{ratingController.rating16}">
+					<p:ajax event="rate" listener="#{ratingController.onrate}"
+						update="messages" />
+					<p:ajax event="cancel" listener="#{ratingController.oncancel}"
+						update="messages" />
+				</p:rating>
+
+				<h:outputText
+					value="5.	 A configuração do(s) computadore(s) e equipamentos da sala de aula e a qualidade do suporte foi apropriada." />
+				<p:rating value="#{ratingController.rating17}">
+					<p:ajax event="rate" listener="#{ratingController.onrate}"
+						update="messages" />
+					<p:ajax event="cancel" listener="#{ratingController.oncancel}"
+						update="messages" />
+				</p:rating>
+
+			</p:panelGrid>
+		</p:panel>
+		
+		<p:panel header="Você tem comentários e sugestões?">
+			<p:inputTextarea rows="6" cols="33" />
+		</p:panel>
+
+		<p:commandButton value="Enviar avaliação" id="submit" update="display"
+			oncomplete="PF('dlg').show()" style="margin:5px" />
+
+		<p:dialog header="Values" widgetVar="dlg" showEffect="fade"
+			hideEffect="fade">
+			<h:panelGrid id="display" columns="2" cellpadding="5">
+				<h:outputText value="Rating 1:" />
+				<h:outputText value="#{ratingController.rating1}" />
+
+				<h:outputText value="Rating 2:" />
+				<h:outputText value="#{ratingController.rating2}" />
+
+				<h:outputText value="Rating 3:" />
+				<h:outputText value="#{ratingController.rating3}" />
+				
+				<h:outputText value="Rating 3:" />
+				<h:outputText value="#{ratingController.rating4}" />
+				
+				<h:outputText value="Rating 3:" />
+				<h:outputText value="#{ratingController.rating5}" />
+				
+				<h:outputText value="Rating 3:" />
+				<h:outputText value="#{ratingController.rating6}" />
+				
+				<h:outputText value="Rating 3:" />
+				<h:outputText value="#{ratingController.rating7}" />
+				
+				<h:outputText value="Rating 3:" />
+				<h:outputText value="#{ratingController.rating8}" />
+				
+				<h:outputText value="Rating 3:" />
+				<h:outputText value="#{ratingController.rating9}" />
+				
+				<h:outputText value="Rating 3:" />
+				<h:outputText value="#{ratingController.rating10}" />
+				
+				<h:outputText value="Rating 3:" />
+				<h:outputText value="#{ratingController.rating11}" />
+				
+				<h:outputText value="Rating 3:" />
+				<h:outputText value="#{ratingController.rating12}" />
+				
+				<h:outputText value="Rating 3:" />
+				<h:outputText value="#{ratingController.rating13}" />
+				
+				<h:outputText value="Rating 3:" />
+				<h:outputText value="#{ratingController.rating14}" />
+				
+				<h:outputText value="Rating 3:" />
+				<h:outputText value="#{ratingController.rating15}" />
+				
+				<h:outputText value="Rating 3:" />
+				<h:outputText value="#{ratingController.rating16}" />
+				
+				<h:outputText value="Rating 3:" />
+				<h:outputText value="#{ratingController.rating17}" />
+				
+			</h:panelGrid>
+		</p:dialog>
+
 	</h:form>
 </h:body>
 </html>
