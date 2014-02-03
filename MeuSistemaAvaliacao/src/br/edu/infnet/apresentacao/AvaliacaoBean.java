@@ -9,9 +9,13 @@ import javax.faces.context.FacesContext;
 
 import org.primefaces.event.RateEvent;
 
+import br.edu.infnet.modelo.negocio.AvaliacaoRN;
+import br.edu.infnet.modelo.negocio.UsuarioRN;
+import br.edu.infnet.pojo.Avaliacao;
+
 @ManagedBean(name="ratingController")
 @SessionScoped
-public class RatingController implements Serializable{  
+public class AvaliacaoBean implements Serializable{  
 	/**
 	 * 
 	 */
@@ -33,7 +37,8 @@ public class RatingController implements Serializable{
 	private Integer rating15;
 	private Integer rating16;
 	private Integer rating17;
-	
+	private String cometario;
+	private Avaliacao avaliacao = new Avaliacao();
     public void onrate(RateEvent rateEvent) {  
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sistema Avaliação", "Você avaliou como:" + ((Integer) rateEvent.getRating()).intValue());  
   
@@ -182,4 +187,17 @@ public class RatingController implements Serializable{
 		this.rating17 = rating17;
 	}
 
+	public String getCometario() {
+		return cometario;
+	}
+
+	public void setCometario(String cometario) {
+		this.cometario = cometario;
+	}
+	public String salvar(){
+		
+		AvaliacaoRN avaliacaoRN = new AvaliacaoRN();
+		avaliacaoRN.salvar(this.avaliacao);
+		return "avaliacaoSucesso";
+	}
 }

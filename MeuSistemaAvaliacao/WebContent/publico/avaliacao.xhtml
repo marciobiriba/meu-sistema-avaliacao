@@ -10,12 +10,17 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>Sistema de Avaliação</title>
+	<style type="text/css">
+	body {
+	font-size: 10px;
+	}
+	</style>
 </h:head>
 <h:body>
 	<h:form id="form">
 
 		<p:growl id="messages" showDetail="true" />
-
+		<h:graphicImage library="imagens" name="logo_infnet"/>
 		<p:panel header="Avaliação geral da Pós-Graduação:">
 			<p:panelGrid columns="2" cellpadding="5">
 				<h:outputText
@@ -189,9 +194,12 @@ minhas expectativas." />
 			<p:inputTextarea rows="6" cols="33" />
 		</p:panel>
 
-		<p:commandButton value="Enviar avaliação" id="submit" update="display"
+		<p:commandButton action="#{ratingController.salvar}" value="Enviar avaliação" id="submit" update="display"
 			oncomplete="PF('dlg').show()" style="margin:5px" />
-
+			
+		<h:commandButton action="#{ratingController.salvar}" value="Enviar avaliação" update="display"
+			oncomplete="PF('dlg').show()" style="margin:5px" />
+			
 		<p:dialog header="Values" widgetVar="dlg" showEffect="fade"
 			hideEffect="fade">
 			<h:panelGrid id="display" columns="2" cellpadding="5">
