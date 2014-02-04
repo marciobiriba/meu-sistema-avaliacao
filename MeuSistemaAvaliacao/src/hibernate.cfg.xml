@@ -23,6 +23,7 @@
 
 		<!-- validate | update | create | create-drop -->
 		<mapping class="br.edu.infnet.pojo.Usuario" />
+		<mapping class="br.edu.infnet.pojo.Avaliacao" />
 		
 	</session-factory>
 </hibernate-configuration>

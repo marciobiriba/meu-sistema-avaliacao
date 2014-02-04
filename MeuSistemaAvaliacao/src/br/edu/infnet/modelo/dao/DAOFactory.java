@@ -9,5 +9,11 @@ public class DAOFactory {
 		usuarioDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
 		return usuarioDAO;
 	}
+
+	public static AvaliacaoDAO criarAvaliacaoDAO() {
+		AvaliacaoDAO avaliacaoDAO = new AvaliacaoDAO();
+		avaliacaoDAO.setSession(HibernateUtil.getSessionFactory().getCurrentSession());
+		return avaliacaoDAO;
+	}
 	
 }

@@ -4,14 +4,14 @@ import java.io.Serializable;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import br.edu.infnet.modelo.negocio.UsuarioRN;
 import br.edu.infnet.pojo.Usuario;
 
 @ManagedBean(name="usuarioBean")
-@SessionScoped
+@RequestScoped
 public class UsuarioBean implements Serializable{
 	/**
 	 * 
