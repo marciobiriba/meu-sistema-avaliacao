@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.NaturalId;
 @Entity
@@ -35,6 +36,9 @@ public class Usuario implements Serializable{
 	private String idioma;
 	@Column
 	private boolean ativo;
+	@OneToOne(optional=false)
+    private Avaliacao avaliacaoUsuario;
+	
 	public Usuario(String login, String senha, String nome) {
 		this.login = login;
 		this.senha = senha;
@@ -96,6 +100,12 @@ public class Usuario implements Serializable{
 	}
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
+	}
+	public Avaliacao getAvaliacaoUsuario() {
+		return avaliacaoUsuario;
+	}
+	public void setAvaliacaoUsuario(Avaliacao avaliacaoUsuario) {
+		this.avaliacaoUsuario = avaliacaoUsuario;
 	}
 	@Override
 	public int hashCode() {

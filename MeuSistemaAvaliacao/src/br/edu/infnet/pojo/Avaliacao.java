@@ -6,11 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 @Entity
 public class Avaliacao implements Serializable{
 	
@@ -21,10 +17,8 @@ public class Avaliacao implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer codigo;
-	@OneToOne
-	@OnDelete(action=OnDeleteAction.CASCADE)
-	@JoinColumn(name="cod_usuario",nullable=false)
-	private Usuario usuario;
+	@OneToOne(mappedBy="avaliacaoUsuario", optional=false)
+	private Usuario usuarioAvaliacao;
 	@Column
 	private Integer rating1;
 	@Column
@@ -158,10 +152,35 @@ public class Avaliacao implements Serializable{
 	public void setRating15(Integer rating15) {
 		this.rating15 = rating15;
 	}
+	public Integer getRating16() {
+		return rating16;
+	}
+	public void setRating16(Integer rating16) {
+		this.rating16 = rating16;
+	}
+	public Integer getRating17() {
+		return rating17;
+	}
+	public void setRating17(Integer rating17) {
+		this.rating17 = rating17;
+	}
+	public String getCometario() {
+		return comentario;
+	}
+	public void setCometario(String cometario) {
+		this.comentario = cometario;
+	}
+	public Usuario getUsuarioAvaliacao() {
+		return usuarioAvaliacao;
+	}
+	public void setUsuarioAvaliacao(Usuario usuarioAvaliacao) {
+		this.usuarioAvaliacao = usuarioAvaliacao;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
 		result = prime * result
 				+ ((comentario == null) ? 0 : comentario.hashCode());
 		result = prime * result + ((rating1 == null) ? 0 : rating1.hashCode());
@@ -189,6 +208,9 @@ public class Avaliacao implements Serializable{
 		result = prime * result + ((rating7 == null) ? 0 : rating7.hashCode());
 		result = prime * result + ((rating8 == null) ? 0 : rating8.hashCode());
 		result = prime * result + ((rating9 == null) ? 0 : rating9.hashCode());
+		result = prime
+				* result
+				+ ((usuarioAvaliacao == null) ? 0 : usuarioAvaliacao.hashCode());
 		return result;
 	}
 	@Override
@@ -200,6 +222,11 @@ public class Avaliacao implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Avaliacao other = (Avaliacao) obj;
+		if (codigo == null) {
+			if (other.codigo != null)
+				return false;
+		} else if (!codigo.equals(other.codigo))
+			return false;
 		if (comentario == null) {
 			if (other.comentario != null)
 				return false;
@@ -290,25 +317,12 @@ public class Avaliacao implements Serializable{
 				return false;
 		} else if (!rating9.equals(other.rating9))
 			return false;
+		if (usuarioAvaliacao == null) {
+			if (other.usuarioAvaliacao != null)
+				return false;
+		} else if (!usuarioAvaliacao.equals(other.usuarioAvaliacao))
+			return false;
 		return true;
-	}
-	public Integer getRating16() {
-		return rating16;
-	}
-	public void setRating16(Integer rating16) {
-		this.rating16 = rating16;
-	}
-	public Integer getRating17() {
-		return rating17;
-	}
-	public void setRating17(Integer rating17) {
-		this.rating17 = rating17;
-	}
-	public String getCometario() {
-		return comentario;
-	}
-	public void setCometario(String cometario) {
-		this.comentario = cometario;
 	}
 	
 }
