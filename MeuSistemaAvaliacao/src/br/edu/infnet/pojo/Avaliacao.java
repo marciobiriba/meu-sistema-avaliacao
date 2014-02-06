@@ -17,8 +17,6 @@ public class Avaliacao implements Serializable{
 	@Id
 	@GeneratedValue
 	private Integer codigo;
-	@OneToOne(mappedBy="avaliacaoUsuario", optional=false)
-	private Usuario usuarioAvaliacao;
 	@Column
 	private Integer rating1;
 	@Column
@@ -170,12 +168,6 @@ public class Avaliacao implements Serializable{
 	public void setCometario(String cometario) {
 		this.comentario = cometario;
 	}
-	public Usuario getUsuarioAvaliacao() {
-		return usuarioAvaliacao;
-	}
-	public void setUsuarioAvaliacao(Usuario usuarioAvaliacao) {
-		this.usuarioAvaliacao = usuarioAvaliacao;
-	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -208,9 +200,7 @@ public class Avaliacao implements Serializable{
 		result = prime * result + ((rating7 == null) ? 0 : rating7.hashCode());
 		result = prime * result + ((rating8 == null) ? 0 : rating8.hashCode());
 		result = prime * result + ((rating9 == null) ? 0 : rating9.hashCode());
-		result = prime
-				* result
-				+ ((usuarioAvaliacao == null) ? 0 : usuarioAvaliacao.hashCode());
+		
 		return result;
 	}
 	@Override
@@ -316,11 +306,6 @@ public class Avaliacao implements Serializable{
 			if (other.rating9 != null)
 				return false;
 		} else if (!rating9.equals(other.rating9))
-			return false;
-		if (usuarioAvaliacao == null) {
-			if (other.usuarioAvaliacao != null)
-				return false;
-		} else if (!usuarioAvaliacao.equals(other.usuarioAvaliacao))
 			return false;
 		return true;
 	}
