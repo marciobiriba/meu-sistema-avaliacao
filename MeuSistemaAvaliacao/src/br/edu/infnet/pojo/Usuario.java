@@ -36,8 +36,8 @@ public class Usuario implements Serializable{
 	private String idioma;
 	@Column
 	private boolean ativo;
-	@OneToOne(optional=false)
-    private Avaliacao avaliacaoUsuario;
+	@OneToOne
+    private Avaliacao avaliacao;
 	
 	public Usuario(String login, String senha, String nome) {
 		this.login = login;
@@ -102,10 +102,10 @@ public class Usuario implements Serializable{
 		this.ativo = ativo;
 	}
 	public Avaliacao getAvaliacaoUsuario() {
-		return avaliacaoUsuario;
+		return avaliacao;
 	}
 	public void setAvaliacaoUsuario(Avaliacao avaliacaoUsuario) {
-		this.avaliacaoUsuario = avaliacaoUsuario;
+		this.avaliacao = avaliacaoUsuario;
 	}
 	@Override
 	public int hashCode() {

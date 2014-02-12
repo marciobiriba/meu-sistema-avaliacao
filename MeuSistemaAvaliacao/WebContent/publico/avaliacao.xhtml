@@ -10,23 +10,25 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<title>Sistema de Avaliação</title>
-	<style type="text/css">
-	body {
-	font-size: 10px;
-	}
-	</style>
+	<h:outputStylesheet library="css" name="estilo.css"/>
 </h:head>
 <h:body>
+	<p:panel>
+		<h:graphicImage library="imagens" name="logo_infnet_small.png" />
+	</p:panel>
 	<h:form id="form">
-
 		<p:growl id="messages" showDetail="true" />
-		<h:graphicImage library="imagens" name="logo_infnet.png"/>
+		<!-- 
 		<h:outputText value="#{request.remoteUser}"/>
 		<h:outputText value="#{contextoBean.usuarioLogado.nome}"/>
-		<h:outputText value="Por favor, preencha essa avaliação com toda atenção. Ela é muito importante para a melhoria contínua de seu curso. É através das avaliações 
-que poderemos construir um curso cada vez melhor, o que é importante para você agora e para o valor de seu diploma no futuro."/>
+		 -->
+		 <p:panel>
+			<h:outputText
+				value="Por favor, preencha essa avaliação com toda atenção. Ela é muito importante para a melhoria contínua de seu curso. É através das avaliações 
+que poderemos construir um curso cada vez melhor, o que é importante para você agora e para o valor de seu diploma no futuro." />
+		</p:panel>
 		<p:panel header="Avaliação geral da Pós-Graduação:">
-			<p:panelGrid columns="2" cellpadding="5">
+			<p:panelGrid style="align: center;" columns="2" cellpadding="5" styleClass="avaliacao-grid">
 				<h:outputText
 					value="1.	 Até agora, o curso está atingindo as minhas expectativas." />
 				<p:rating value="#{ratingController.avaliacao.rating1}">
@@ -87,7 +89,7 @@ minhas expectativas." />
 		</p:panel>
 		
 		<p:panel header="Avaliação do professor no módulo:">
-			<p:panelGrid columns="2" cellpadding="5">
+			<p:panelGrid style="align: center;" columns="2" cellpadding="5" styleClass="avaliacao-grid">
 				<h:outputText
 					value="1.	 O professor contribuiu para o meu aprendizado." />
 				<p:rating value="#{ratingController.avaliacao.rating7}">
@@ -146,7 +148,7 @@ minhas expectativas." />
 		</p:panel>
 
 		<p:panel header="Avaliação de conteúdo e infra-estrutura no módulo:">
-			<p:panelGrid columns="2" cellpadding="5">
+			<p:panelGrid style="align: center;" columns="2" cellpadding="5" styleClass="avaliacao-grid">
 				<h:outputText
 					value="1.	 Eu adquiri as competências propostas para o módulo." />
 				<p:rating value="#{ratingController.avaliacao.rating13}">

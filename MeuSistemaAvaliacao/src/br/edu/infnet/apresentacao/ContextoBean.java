@@ -1,6 +1,8 @@
 package br.edu.infnet.apresentacao;
 
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
@@ -11,8 +13,12 @@ import br.edu.infnet.pojo.Usuario;
 
 @ManagedBean(name = "contextoBean")
 @SessionScoped
-public class ContextoBean {
+public class ContextoBean implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Usuario usuarioLogado = null;
 	
 	public Usuario getUsuarioLogado(){

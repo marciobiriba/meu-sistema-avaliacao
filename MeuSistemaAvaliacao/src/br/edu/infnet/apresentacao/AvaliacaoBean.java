@@ -31,13 +31,36 @@ public class AvaliacaoBean implements Serializable{
 	}
 
 	public void onrate(RateEvent rateEvent) {  
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sistema Avaliação", "Você avaliou como:" + ((Integer) rateEvent.getRating()).intValue());  
-
+		String mensagem = new String();
+		switch (((Integer) rateEvent.getRating()).intValue()) {
+        case 0:
+        	mensagem = "Prefiro não opinar";
+            break;
+                
+        case 1:
+            mensagem = "Discordo totalmente";
+            break;
+        
+        case 2:
+        	mensagem = "Discordo";
+            break;
+        case 3:
+        	mensagem = "Nem discordo nem concordo";
+            break;
+        case 4:
+        	mensagem = "Concordo";
+            break;
+        case 5:
+        	mensagem = "Concordo Totalmente";
+            break;
+    }
+		  
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sistema Avaliação", mensagem);
 		FacesContext.getCurrentInstance().addMessage(null, message);  
 	}  
 
 	public void oncancel() {  
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sistema Avaliação", "Melhor não opinar");  
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sistema Avaliação", "Prefiro não opinar");  
 
 		FacesContext.getCurrentInstance().addMessage(null, message);  
 	}  
