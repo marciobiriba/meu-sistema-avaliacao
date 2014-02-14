@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -8,50 +9,64 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Sistema de Avaliação</title>
+	<h:outputStylesheet library="css" name="estilo.css" />
 </h:head>
 <h:body>
-	<h1>Cadastro de Usuários</h1>
+	<p:panel>
+		<h:graphicImage library="imagens" name="logo_infnet_small.png" />
+	</p:panel>
 	<h:form>
+		<p:panel>
+			<h:outputText value="Login - Sistema de Avaliação de Aluno" />
+		</p:panel>
 		<h:messages />
-		<h:dataTable value="#{usuarioBean.lista}" var="usuario" rules="rows"
+		<p:dataTable value="#{usuarioBean.lista}" var="usuario" rules="rows"
 			cellpadding="5">
 			<f:facet name="caption">
 			A listagem a seguir exibe a relação de todos os usuários do sistema. Você poderá realizar ativação e desativação, edição e exclusão para todos os usuários.
 			</f:facet>
 			<f:facet name="header">Listagem de Usuários</f:facet>
 			<f:facet name="footer">Final da listagem</f:facet>
-			<h:column>
+			<p:column>
 				<h:commandLink action="#{usuarioBean.ativar}">
 					<h:graphicImage library="imagens"
 						name="usuario_ativo_#{usuario.ativo}.png" style="border:0" />
 					<f:setPropertyActionListener target="#usuarioBean.usuario"
 						value="#{usuario}" />
 				</h:commandLink>
-			</h:column>
-			<h:column>
+			</p:column>
+			<p:column>
 				<h:graphicImage library="imagens"
 					name="bandeira_#{usuario.idioma}.png" />
-			</h:column>
-			<h:column>
+			</p:column>
+			<p:column>
 				<f:facet name="header">Nome</f:facet>
 				#{usuario.nome}
-			</h:column>
-			<h:column>
+			</p:column>
+			<p:column>
 				<f:facet name="header">e-Mail</f:facet>
-				<a href="mailto:#{usuario.email}">#{usuario.email}</a>	
-			</h:column>
-			<h:column>
+				<a href="mailto:#{usuario.email}">#{usuario.email}</a>
+			</p:column>
+			<p:column>
 				<h:commandLink action="#{usuarioBean.editar}">
-					<f:setPropertyActionListener target="#{usuarioBean.usuario}" value="#{usuario}"/>					
+					<h:graphicImage library="imagens" name="excluir16.png" style="boarder:0"/>
+					<f:setPropertyActionListener target="#{usuarioBean.usuario}"
+						value="#{usuario}" />
+					<f:setPropertyActionListener target="#{usuarioBean.destinoSalvar}"
+						value="/admin/admin" />
 				</h:commandLink>
-			</h:column>
-			<h:column>
-				<h:commandLink action="#{usuarioBean.excluir}" onclick="if(!confirm('Confirma a exclusão do usuário #{usaurio.nome}?')) return false;"/>
-				<h:graphicImage library="imagens" name="excluir16.png" style="border:0"/>
-				<f:setPropertyActionListener target="#{usuarioBean.usuario}" value="#{usuario}"/>
+			</p:column>
+			<p:column>
+				<h:commandLink action="#{usuarioBean.excluir}"
+					onclick="if(!confirm('Confirma a exclusão do usuário #{usuario.nome}?')) return false;">
+					<h:graphicImage library="imagens" name="excluir16.png"
+						style="border:0" />
+					<f:setPropertyActionListener target="#{usuarioBean.usuario}"
+						value="#{usuario}" />
 				</h:commandLink>
-			</h:column>
-		</h:dataTable>
+			</p:column>
+		</p:dataTable>
 	</h:form>
 </h:body>
 </html>
