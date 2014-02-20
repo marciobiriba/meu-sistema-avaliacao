@@ -7,6 +7,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 import br.edu.infnet.excecao.RNException;
 import br.edu.infnet.modelo.negocio.UsuarioRN;
@@ -23,6 +24,8 @@ public class UsuarioBean implements Serializable{
 	private List<Usuario> lista;
 	private String confirmarSenha;
 	private String destinoSalvar;
+	private boolean autenticado = false;
+	private String msgLoginErro = "Login ou Senha inválidos!";
 	
 	public String novo(){
 		this.destinoSalvar = "usuarioSucesso";
@@ -49,22 +52,28 @@ public class UsuarioBean implements Serializable{
 		usuarioRN.salvar(this.usuario);
 		return this.destinoSalvar;
 	}
-	public String efetuarLogin() {
-		FacesContext context = FacesContext.getCurrentInstance();
+	public void efetuarLogin(ActionEvent actionEvent) {
 		
 		UsuarioRN usuarioRN = new UsuarioRN();
 		Usuario usuarioConsulta = usuarioRN.buscarPorLogin(this.usuario.getLogin());
 		String senha = this.usuario.getSenha();
 		if(!senha.equals(usuarioConsulta.getSenha())){
-			context.addMessage(null,
-					new FacesMessage("Login ou Senha inválidos!"));
-			System.out.println("Login ou Senha inválidos!");
-			return "login";
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login ou Senha inválidos!" , null);
+			FacesContext.getCurrentInstance().addMessage(null, message);
+			autenticado = false;
+			System.out.print(msgLoginErro);
+		}else{
+			autenticado = true;
 		}
-		System.out.println("Deveria retornar avaliação");
-		return "avaliacao";
 		
 	}
+	
+	public String redirecionarLogin(){
+		if(autenticado)
+			return "avaliacao";
+		return "login";	
+	}
+	
 	public String excluir() throws RNException{
 		UsuarioRN usuarioRN = new UsuarioRN();
 		usuarioRN.excluir(this.usuario);

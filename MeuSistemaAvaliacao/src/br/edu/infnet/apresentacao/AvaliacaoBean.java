@@ -61,7 +61,6 @@ public class AvaliacaoBean implements Serializable{
 
 	public void oncancel() {  
 		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Sistema Avaliação", "Prefiro não opinar");  
-
 		FacesContext.getCurrentInstance().addMessage(null, message);  
 	}  
 	public String salvar(){

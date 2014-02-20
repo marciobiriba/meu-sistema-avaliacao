@@ -36,7 +36,7 @@
 					<p:password id="senha" value="#{usuarioBean.usuario.senha}"
 						label="Senha" />
 				</h:panelGroup>
-				<p:commandButton action="#{usuarioBean.efetuarLogin}" value="Entrar" />
+				<p:commandButton action="#{usuarioBean.redirecionarLogin}" actionListener="#{usuarioBean.efetuarLogin}" update="panel" value="Entrar" />
 				<p:commandButton action="#{usuarioBean.novo}" value="Registre-se" />
 			</p:panelGrid>
 		</p:panel>
